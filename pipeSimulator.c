@@ -94,7 +94,6 @@ int main(int argc, const char * argv[]){
     
     FILE *f;
     f = fopen(argv[1], "r");
-    //f = fopen("/Users/mrnatural028/Desktop/multPipe.txt", "r");
     
     //declare states
     stateType state;
@@ -117,8 +116,7 @@ int main(int argc, const char * argv[]){
     state.WBEND.instr = NOOPINSTRUCTION;
     
     
-    //Not necessary, but we were getting weird
-    //numbers at the start of the program.
+    //Initialize values
     state.IFID.pcPlus1 = 0;
     state.IDEX.pcPlus1 = 0;
     state.IDEX.readRegA = 0;
@@ -145,7 +143,7 @@ int main(int argc, const char * argv[]){
         ++i;
     }
     
-    
+    fclose(f);
     
     int lwFlag = 0;
     int fetchFlag = 0;
@@ -208,7 +206,7 @@ int main(int argc, const char * argv[]){
         }
         
             
-            //LW Stalls for lw
+        //LW Stalls for lw
         }else if (opcode(state.IFID.instr) == LW){
             
             if((opcode(state.IDEX.instr) == LW) &&
