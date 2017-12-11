@@ -48,8 +48,13 @@ Inside this file will be the following contents:
 - When “make” is input into the command line (while in this directory), this file will compile the pipeSimulator.c file and output an executable file titled “pipeSimulator.”
 - Another file will also appear called “pipedSimulator.o.” You do not need to worry about this file
 
+4.) multiplicationTest.txt
+- This is an example of assembly code instructions input into the simulator. These are MIPS based instructions.
+- This assembly code cannot directly be input into the simulator. It must first be run through an assembler (separate project I have created)
 
-
+5.) multMachine.txt
+- This is the machine code that corresponds to the "multiplicationTest.txt" file. This is the multiplication function in its machine code form.
+- This file may be directly input into the program. Please see below for details on compilation and running.
 
 
 			***Background***
