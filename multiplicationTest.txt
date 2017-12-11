@@ -1,0 +1,27 @@
+ lw 0 0 zero
+ lw 1 0 zero //initialize final output (should start at 0)
+ lw 2 0 num2 //multiplier
+ lw 3 0 one //will be 1,2,4,8,etc (Used to isolate each bit in multiplier)
+ lw 4 0 num1 //will bit shift multiplicand by doubling each time through
+ lw 5 0 allOne //Second part of Nanding, Isolate each bit in multiplier
+ lw 6 0 loopI //end the loop after 32 passes
+start nand 7 3 2
+ nand 7 7 5
+ beq 7 0 1 //reg7 to contain consecutive bits in multiplier
+ add 1 4 1 // if reg7 has 1, add reg4 to final
+ add 4 4 4 //left bit shift multiplicand
+ add 3 3 3 //left bit shift incrementer
+ lw 7 0 dec //load -1 to reg7
+ add 6 6 7 //decrement loop
+ beq 6 0 final //if loop has reached end
+ beq 0 0 start //go back to start
+ noop
+final add 7 0 1
+done halt
+zero .fill 0
+num1 .fill 29562 //add your numbers here…
+num2 .fill 11834 //and here to multiply
+one .fill 1
+loopI .fill 32
+allOne .fill 65535
+dec .fill -1
